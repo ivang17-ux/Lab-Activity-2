@@ -1,64 +1,96 @@
+
 public class Main {
+
     public static void main(String[] args) {
 
-        git 
+        // Polymorphic Array
         Vehicle[] vehicles = {
-            new Vehicle("Toyota", "Corolla", 1995),
-            new Vehicle("Honda", "Civic", 2018),
-            new Vehicle("Tesla", "Model 3", 2023)
+            new Car("Toyota", "Corolla", 1995, 4),
+            new Car("Honda", "Civic", 2018, 4),
+            new Motorcycle("Yamaha", "R15", 2023, 155),
+            new Truck("Volvo", "FH16", 2020, 20.5)
         };
 
-        
+        // Loop through all vehicles
         for (int i = 0; i < vehicles.length; i++) {
-            System.out.println("--- Vehicle " + (i + 1) + " ---");
 
+            System.out.println("================================");
+            System.out.println("--- Vehicle " + (i + 1) + " ---");
+            System.out.println("================================");
+
+            // Display information
             vehicles[i].displayInfo();
 
-            
-            System.out.println("Brand: " + vehicles[i].getBrand());
-            System.out.println("Model: " + vehicles[i].getModel());
-            System.out.println("Year: " + vehicles[i].getYear());
-
-            
+            // Display age and vintage status
             System.out.println("Age: " + vehicles[i].calculateAge());
             System.out.println("Vintage: " + vehicles[i].isVintage());
+
+            // Start engine
+            vehicles[i].startEngine();
+
+            // Test all abstract movement methods
+            System.out.println("\n--- Movement Tests ---");
+
+            vehicles[i].moveForward();
+            vehicles[i].moveBackwards();
+            vehicles[i].moveLeft();
+            vehicles[i].moveRight();
 
             System.out.println();
         }
 
-        
+        // Testing setYear()
+        System.out.println("================================");
         System.out.println("--- Testing setYear() ---");
+        System.out.println("================================");
 
         Vehicle testVehicle = vehicles[0];
 
-        System.out.println("setYear(2000): " + testVehicle.setYear(2000));
-        System.out.println("Stored year: " + testVehicle.getYear());
-        System.out.println("Age: " + testVehicle.calculateAge());
-        System.out.println("Vintage: " + testVehicle.isVintage());
+        System.out.println("setYear(2000): "
+                + testVehicle.setYear(2000));
+
+        System.out.println("Stored Year: "
+                + testVehicle.getYear());
+
+        System.out.println("Age: "
+                + testVehicle.calculateAge());
+
+        System.out.println("Vintage: "
+                + testVehicle.isVintage());
 
         System.out.println();
 
-        System.out.println("setYear(1885): " + testVehicle.setYear(1885));
-        System.out.println("Stored year: " + testVehicle.getYear());
+        System.out.println("setYear(1885): "
+                + testVehicle.setYear(1885));
+
+        System.out.println("Stored Year: "
+                + testVehicle.getYear());
 
         System.out.println();
 
-        System.out.println("setYear(2027): " + testVehicle.setYear(2027));
-        System.out.println("Stored year: " + testVehicle.getYear());
+        System.out.println("setYear(2027): "
+                + testVehicle.setYear(2027));
 
-        System.out.println();
+        System.out.println("Stored Year: "
+                + testVehicle.getYear());
 
-       
-        System.out.println("--- Invalid Constructor Tests ---");
+        // Invalid constructor tests
+        System.out.println("\n--- Invalid Constructor Tests ---");
 
-        Vehicle vehicle1885 = new Vehicle("Ford", "Mustang", 1885);
+        Vehicle vehicle1885 =
+                new Car("Ford", "Mustang", 1885, 2);
+
         System.out.println("New vehicle with year 1885");
-        System.out.println("Initial year: " + vehicle1885.getYear());
+        System.out.println("Initial Year: "
+                + vehicle1885.getYear());
 
         System.out.println();
 
-        Vehicle vehicle2027 = new Vehicle("BMW", "M3", 2027);
+        Vehicle vehicle2027 =
+                new Truck("BMW", "Truck", 2027, 15.0);
+
         System.out.println("New vehicle with year 2027");
-        System.out.println("Initial year: " + vehicle2027.getYear());
+        System.out.println("Initial Year: "
+                + vehicle2027.getYear());
     }
 }
