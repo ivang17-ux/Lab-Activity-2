@@ -9,16 +9,10 @@ public abstract class Vehicle {
     public Vehicle(String brand, String model, int year, int wheels) {
         this.brand = brand;
         this.model = model;
+        this.year = year;
         this.wheels = wheels;
-
-        if (year >= 1886 && year <= 2026) {
-            this.year = year;
-        } else {
-            this.year = 2026;
-        }
     }
 
-    // Getters
     public String getBrand() {
         return brand;
     }
@@ -35,49 +29,12 @@ public abstract class Vehicle {
         return wheels;
     }
 
-    // Setter
-    public boolean setYear(int year) {
-        if (year >= 1886 && year <= 2026) {
-            this.year = year;
-            return true;
-        }
-
-        return false;
-    }
-
-    // Calculate age
-    public int calculateAge() {
-        return 2026 - year;
-    }
-
-    // Check vintage
-    public boolean isVintage() {
-        return calculateAge() > 25;
-    }
-
-    // Full name
-    public String fullName() {
-        return brand + " " + model;
-    }
-
-    // Display information
     public void displayInfo() {
         System.out.println("Brand: " + brand);
         System.out.println("Model: " + model);
         System.out.println("Year: " + year);
+        System.out.println("Wheels: " + wheels);
     }
 
-    // Start engine
-    public void startEngine() {
-        System.out.println(fullName() + " engine started.");
-    }
-
-    // Abstract movement methods
-    public abstract void moveForward();
-
-    public abstract void moveBackwards();
-
-    public abstract void moveLeft();
-
-    public abstract void moveRight();
+    public abstract void move();
 }
