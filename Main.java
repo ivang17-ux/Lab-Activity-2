@@ -1,20 +1,52 @@
+
 public class Main {
+
+    public static void performService(Serviceable item) {
+        item.service();
+    }
+
     public static void main(String[] args) {
 
-        Vehicle[] vehicles = {
-            new Vehicle("Toyota", "Corolla", 1995),
-            new Vehicle("Honda", "Civic", 2018),
-            new Vehicle("Tesla", "Model 3", 2023)
+        // Create one object of each class
+        Car car = new Car("Toyota", "Corolla", 1995, 4);
+
+        Motorcycle motorcycle =
+                new Motorcycle("Yamaha", "R15", 2023, 155);
+
+        Truck truck =
+                new Truck("Isuzu", "Giga", 2020, 12.5);
+
+        Printer printer = new Printer();
+
+        // Serviceable array
+        Serviceable[] serviceItems = {
+            car,
+            motorcycle,
+            truck,
+            printer
         };
 
-        for (int i = 0; i < vehicles.length; i++) {
-            System.out.println("--- Vehicle " + (i + 1) + " ---");
+        System.out.println("===== SERVICE ACTIVITIES =====");
 
-            vehicles[i].displayInfo();
-            System.out.println("Age: " + vehicles[i].calculateAge());
-            System.out.println("Vintage: " + vehicles[i].isVintage());
+        for (Serviceable item : serviceItems) {
+            performService(item);
+        }
 
-            System.out.println();
+        // Vehicle array
+        Vehicle[] vehicles = {
+            car,
+            motorcycle,
+            truck
+        };
+
+        System.out.println("\n===== VEHICLE INFORMATION =====");
+
+        for (Vehicle vehicle : vehicles) {
+
+            System.out.println("\n--------------------");
+
+            vehicle.displayInfo();
+            vehicle.move();
         }
     }
 }
